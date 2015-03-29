@@ -1,0 +1,51 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Login{% endblock %}
+{% block main_title %}Login{% endblock %}
+
+{% block fos_user_content %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="content">
+    <form class="ui form" action="{{ path("fos_user_security_check") }}" method="post">
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <div class="field">
+            <label for="username">{{ 'security.login.username'|trans }}</label>
+
+            <div class="ui icon input">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                <i class="user icon"></i>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="password">{{ 'security.login.password'|trans }}</label>
+
+            <div class="ui icon input">
+                <input type="password" id="password" name="_password" required="required" />
+                <i class="lock icon"></i>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="ui checkbox">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+            </div>
+        </div>
+
+        <div class="field">
+            <input class="ui positive button" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            <a class="ui basic button" href="{{ path('fos_user_resetting_request') }}">{% trans %}Forgott password?{% endtrans %}</a>
+        </div>
+
+        </div>
+    </form>
+    </div>
+{% endblock fos_user_content %}

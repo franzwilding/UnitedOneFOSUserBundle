@@ -1,0 +1,16 @@
+<tr>
+    <td>{{ entity.username }}</td>
+    <td class="right aligned">
+        <a href="{{ united.url('update', null, { id: entity.id }) }}" class="ui black basic small labled icon button">
+            <i class="pencil icon"></i>
+            {% trans %}Edit{% endtrans %}
+        </a>
+
+        {% if is_granted('change', entity) %}
+            <a href="{{ united.url('change', null, { id: entity.id }) }}" class="ui black basic small labled icon button">
+                <i class="pencil icon"></i>
+                {% trans %}Change password{% endtrans %}
+            </a>
+        {% endif %}
+    </td>
+</tr>

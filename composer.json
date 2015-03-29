@@ -1,0 +1,27 @@
+{
+  "name": "franzwilding/united-one-fos-user-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony FosUserBundle integration for UnitedOneBundle CMS Theme",
+  "keywords": [
+    "CMS",
+    "Content Management",
+    "Theme",
+    "User",
+    "FOSUSerBundle"
+  ],
+  "homepage": "https://github.com/franzwilding/UnitedOneFOSUserBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Franz Wilding",
+      "email": "franz@2robots.at"
+    }
+  ],
+  "require": {
+    "franzwilding/united-one-bundle": "0.0.0.*", 
+    "friendsofsymfony/user-bundle": "~2.0@dev"
+  },
+  "autoload": {
+    "psr-4": {"United\\OneFOSUserBundle\\": ""}
+  }
+}

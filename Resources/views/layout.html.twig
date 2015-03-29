@@ -1,0 +1,25 @@
+{% extends '@UnitedOne/layout.html.twig' %}
+{% block title %}Login{% endblock %}
+{% block header %}{% endblock %}
+{% block navigation %}
+{% endblock %}
+
+{% block content_wrapper %}
+
+    <div class="ui two column stackable centered page grid">
+
+    <div class="one column centered row" style="padding-top: 10%">
+        <h2 class="ui center aligned icon header">
+            <i class="circular users icon"></i>
+            <div class="content">{% block main_title %}{% trans %}Login{% endtrans %}{% endblock %}</div>
+        </h2>
+    </div>
+
+        <div class="column">
+            <div class="ui fluid card">
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
