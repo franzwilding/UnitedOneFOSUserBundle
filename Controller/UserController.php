@@ -18,47 +18,45 @@ abstract class UserController extends TableController
 {
 
     /**
-     * Returns the template for the given action. For the base implementation,
-     * $action can be: index|create|update|delete.
-     *
-     * @param string $action the action to get the twig template for
+     * Returns the template for the row action.
      * @return string the twig template to render
      */
-    protected function getTemplateForAction($action)
+    protected function templateForRowAction()
     {
-        switch ($action) {
-            case 'row':
-                return 'UnitedOneFOSUserBundle:User:row.html.twig';
-                break;
-            default:
-                return parent::getTemplateForAction($action);
-                break;
-        }
+        return 'UnitedOneFOSUserBundle:User:row.html.twig';
     }
 
     /**
-     * Returns the form the given action. For the base implementation,
-     * $action can be: index|create|update|delete.
+     * Returns the form the create action.
      *
-     * @param string $action
      * @param null|object $entity
      * @return string|Form
      */
-    protected function getFormForAction($action, $entity = null)
+    protected function formForCreateAction($entity = null)
     {
-        if ($action == 'create') {
-            return $this->createForm(new CreateUserType($this->getEntityRepository()->getClassName()), $entity);
-        }
+        return $this->createForm(new CreateUserType($this->getEntityRepository()->getClassName()), $entity);
+    }
 
-        if ($action == 'update' ) {
-            return $this->createForm(new UpdateUserType($this->getEntityRepository()->getClassName()), $entity);
-        }
+    /**
+     * Returns the form the update action.
+     *
+     * @param null|object $entity
+     * @return string|Form
+     */
+    protected function formForUpdateAction($entity = null)
+    {
+        return $this->createForm(new UpdateUserType($this->getEntityRepository()->getClassName()), $entity);
+    }
 
-        if($action == 'change') {
-            return $this->createForm(new ChangePasswordUserType($this->getEntityRepository()->getClassName()), $entity);
-        }
-
-        return parent::getFormForAction($action, $entity);
+    /**
+     * Returns the form the change action.
+     *
+     * @param null|object $entity
+     * @return string|Form
+     */
+    protected function formForChangeAction($entity = null)
+    {
+        return $this->createForm(new ChangePasswordUserType($this->getEntityRepository()->getClassName()), $entity);
     }
 
     /**
